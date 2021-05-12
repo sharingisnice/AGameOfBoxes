@@ -13,7 +13,7 @@ class GameScreenViewModel {
     var totalScore = 0
     let radiusSize: CGFloat = 12
     
-    let colorBox = [UIColor.BoxGameTheme.coolOrange, .BoxGameTheme.coolGreen, .BoxGameTheme.coolMagenta, .BoxGameTheme.coolBlue, .BoxGameTheme.coolRed , .BoxGameTheme.coolLightGreen]
+    let colorBox = [UIColor.BoxGameTheme.coolOrange, .BoxGameTheme.coolGreen, .BoxGameTheme.coolMagenta, .BoxGameTheme.coolBlue, .BoxGameTheme.coolRed , .BoxGameTheme.coolLightGreen, .BoxGameTheme.coolDarkerBlue]
     
     func DrawBlocks(size: Int, enclosingView: UIView) -> [Block] {
         var blockArray = [Block()]
@@ -49,10 +49,37 @@ class GameScreenViewModel {
         let newView = UIView(frame: sender.bounds)
         newView.backgroundColor = colorBox.randomElement()
         newView.layer.cornerRadius = radiusSize
+        let animation = growAnimation(view: newView)
+        newView.layer.add(animation, forKey: nil)
         
         if true {
             sender.addSubview(newView)
         }
+    }
+    
+    
+    func growAnimation(view: UIView) -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: "transform.scale")
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.duration = 0.1
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        
+        return animation
+    }
+    
+    
+    func dropAnimation(view: UIView, toPosition: CGRect) -> CABasicAnimation {
+        let animation = CABasicAnimation(keyPath: "transform.y")
+        
+        animation.fromValue = 0
+        animation.toValue = toPosition
+        animation.duration = 1
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        
+        return animation
     }
     
 }

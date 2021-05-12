@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIJ-Zs-CAT" userLabel="GameArea">
-                                <rect key="frame" x="20" y="134" width="374" height="400"/>
+                                <rect key="frame" x="20" y="253" width="374" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="50L-sq-pwg"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nU-RC-6Zs">
-                                <rect key="frame" x="186" y="554" width="42" height="21"/>
+                                <rect key="frame" x="186" y="673" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozE-M2-q1b">
-                                <rect key="frame" x="186" y="105" width="42" height="21"/>
+                                <rect key="frame" x="186" y="224" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -46,11 +46,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NIJ-Zs-CAT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Gpv-7R-1nD"/>
-                            <constraint firstItem="ozE-M2-q1b" firstAttribute="top" secondItem="toj-CL-ZMo" secondAttribute="bottom" constant="40" id="Ozc-dO-BRP"/>
                             <constraint firstItem="6nU-RC-6Zs" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Vpw-20-xpK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NIJ-Zs-CAT" secondAttribute="trailing" constant="20" id="Xb5-uT-Omg"/>
                             <constraint firstItem="NIJ-Zs-CAT" firstAttribute="top" secondItem="ozE-M2-q1b" secondAttribute="bottom" constant="8" symbolic="YES" id="YdA-C1-ddj"/>
                             <constraint firstItem="6nU-RC-6Zs" firstAttribute="top" secondItem="NIJ-Zs-CAT" secondAttribute="bottom" constant="20" id="Ygx-2K-wZe"/>
+                            <constraint firstItem="NIJ-Zs-CAT" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="dBq-r5-YKA"/>
                             <constraint firstItem="ozE-M2-q1b" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rqg-IM-nlO"/>
                             <constraint firstItem="toj-CL-ZMo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tQu-AS-Ux9"/>
                             <constraint firstItem="toj-CL-ZMo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yjt-ri-HHl"/>

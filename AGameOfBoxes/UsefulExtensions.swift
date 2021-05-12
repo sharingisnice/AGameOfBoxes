@@ -16,6 +16,8 @@ extension UIColor {
         static var coolOrange:UIColor { return UIColor(red: 0.93, green: 0.58, blue: 0.29, alpha: 1.00) }
         static var coolMagenta:UIColor { return UIColor(red: 0.83, green: 0.77, blue: 0.98, alpha: 1.00) }
         static var coolRed:UIColor { return UIColor(red: 0.86, green: 0.40, blue: 0.33, alpha: 1.00) }
+        static var coolDarkerBlue:UIColor { return UIColor(red: 0.49, green: 0.56, blue: 0.84, alpha: 1.00) }
+
     }
     
 }
