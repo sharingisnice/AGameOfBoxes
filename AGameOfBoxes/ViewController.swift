@@ -16,19 +16,31 @@ class ViewController: UIViewController {
     
     
     let viewModel = GameScreenViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         updateUI()
     }
     
+    override func viewDidLayoutSubviews() {
+        setupUI()
+    }
+        
+    func setupUI() {
+        let initialView = viewModel.DrawBlocks(size: 5, enclosingView: gameArea)
+
+        for sub in initialView {
+            gameArea.addSubview(sub)
+        }
+        
+    }
     
     func updateUI() {
         remainingManoeuvresLabel.text = "Remaining Moves: \(viewModel.remainingManoeuvres)"
         totalScoreLabel.text = "Total Score: \(viewModel.totalScore)"
     }
-
-
+    
+    
 }
 
