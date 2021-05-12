@@ -13,6 +13,7 @@
 		E283E5C2264C026C00616F8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E283E5C0264C026C00616F8F /* Main.storyboard */; };
 		E283E5C4264C026D00616F8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E283E5C3264C026D00616F8F /* Assets.xcassets */; };
 		E283E5C7264C026D00616F8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E283E5C5264C026D00616F8F /* LaunchScreen.storyboard */; };
+		E283E5CF264C03B900616F8F /* gameScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E5CE264C03B900616F8F /* gameScreenViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E283E5C3264C026D00616F8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E283E5C6264C026D00616F8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E283E5C8264C026D00616F8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E283E5CE264C03B900616F8F /* gameScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameScreenViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				E283E5BA264C026C00616F8F /* AppDelegate.swift */,
 				E283E5BC264C026C00616F8F /* SceneDelegate.swift */,
 				E283E5BE264C026C00616F8F /* ViewController.swift */,
+				E283E5CE264C03B900616F8F /* gameScreenViewModel.swift */,
 				E283E5C0264C026C00616F8F /* Main.storyboard */,
 				E283E5C3264C026D00616F8F /* Assets.xcassets */,
 				E283E5C5264C026D00616F8F /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			files = (
 				E283E5BF264C026C00616F8F /* ViewController.swift in Sources */,
 				E283E5BB264C026C00616F8F /* AppDelegate.swift in Sources */,
+				E283E5CF264C03B900616F8F /* gameScreenViewModel.swift in Sources */,
 				E283E5BD264C026C00616F8F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +293,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q5U9LJV46H;
 				INFOPLIST_FILE = AGameOfBoxes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Q5U9LJV46H;
 				INFOPLIST_FILE = AGameOfBoxes/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

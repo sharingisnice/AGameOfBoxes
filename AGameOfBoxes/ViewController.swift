@@ -8,10 +8,25 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    @IBOutlet weak var remainingManoeuvresLabel: UILabel!
+    @IBOutlet weak var totalScoreLabel: UILabel!
+    @IBOutlet weak var gameArea: UIView!
+    
+    
+    let viewModel = GameScreenViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        updateUI()
+    }
+    
+    
+    func updateUI() {
+        remainingManoeuvresLabel.text = "Remaining Moves: \(viewModel.remainingManoeuvres)"
+        totalScoreLabel.text = "Total Score: \(viewModel.totalScore)"
     }
 
 
