@@ -9,6 +9,7 @@ import UIKit
 
 protocol GameScreenDelegate {
     func updateView()
+    func enableRestart()
 }
 
 class GameScreenViewModel {
@@ -131,7 +132,7 @@ class GameScreenViewModel {
     
     
     func finishGame() {
-        //
+        delegate?.enableRestart()
     }
     
     

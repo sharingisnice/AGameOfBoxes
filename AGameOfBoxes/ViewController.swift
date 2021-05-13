@@ -13,9 +13,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var remainingManoeuvresLabel: UILabel!
     @IBOutlet weak var totalScoreLabel: UILabel!
     @IBOutlet weak var gameArea: UIView!
+    @IBOutlet weak var restartButtonOutlet: UIButton!
     
     
-    let viewModel = GameScreenViewModel()
+    var viewModel = GameScreenViewModel()
     var setupComplete = false
     
     override func viewDidLoad() {
@@ -42,6 +43,8 @@ class ViewController: UIViewController {
         
         viewModel.delegate = self
         setupComplete = true
+        
+        restartButtonOutlet.isEnabled = false
     }
     
     func updateUI() {
@@ -49,6 +52,13 @@ class ViewController: UIViewController {
         totalScoreLabel.text = "Total Score: \(viewModel.totalScore)"
     }
     
+    @IBAction func restartGame(_ sender: Any) {
+        viewModel = GameScreenViewModel()
+
+        setupUI()
+        updateUI()
+        
+    }
     
     
     
@@ -57,8 +67,10 @@ class ViewController: UIViewController {
 extension ViewController: GameScreenDelegate {
     func updateView() {
         self.updateUI()
-
     }
     
+    func enableRestart() {
+        restartButtonOutlet.isEnabled = true
+    }
     
 }

@@ -41,16 +41,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lS0-ah-IRM">
+                                <rect key="frame" x="182" y="702" width="50" height="30"/>
+                                <state key="normal" title="Restart"/>
+                                <connections>
+                                    <action selector="restartGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QSY-Mx-Wei"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="lS0-ah-IRM" firstAttribute="top" secondItem="6nU-RC-6Zs" secondAttribute="bottom" constant="8" symbolic="YES" id="4cO-Wh-paA"/>
                             <constraint firstItem="NIJ-Zs-CAT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Gpv-7R-1nD"/>
                             <constraint firstItem="6nU-RC-6Zs" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Vpw-20-xpK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NIJ-Zs-CAT" secondAttribute="trailing" constant="20" id="Xb5-uT-Omg"/>
                             <constraint firstItem="NIJ-Zs-CAT" firstAttribute="top" secondItem="ozE-M2-q1b" secondAttribute="bottom" constant="8" symbolic="YES" id="YdA-C1-ddj"/>
                             <constraint firstItem="6nU-RC-6Zs" firstAttribute="top" secondItem="NIJ-Zs-CAT" secondAttribute="bottom" constant="20" id="Ygx-2K-wZe"/>
                             <constraint firstItem="NIJ-Zs-CAT" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="dBq-r5-YKA"/>
+                            <constraint firstItem="lS0-ah-IRM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="nsn-ek-D17"/>
                             <constraint firstItem="ozE-M2-q1b" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="rqg-IM-nlO"/>
                             <constraint firstItem="toj-CL-ZMo" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tQu-AS-Ux9"/>
                             <constraint firstItem="toj-CL-ZMo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yjt-ri-HHl"/>
@@ -59,6 +68,7 @@
                     <connections>
                         <outlet property="gameArea" destination="NIJ-Zs-CAT" id="JTN-9d-Ikf"/>
                         <outlet property="remainingManoeuvresLabel" destination="ozE-M2-q1b" id="YlB-Gv-zuD"/>
+                        <outlet property="restartButtonOutlet" destination="lS0-ah-IRM" id="c1O-ks-R7U"/>
                         <outlet property="totalScoreLabel" destination="6nU-RC-6Zs" id="Jog-Ul-GT9"/>
                     </connections>
                 </viewController>
