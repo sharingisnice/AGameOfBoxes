@@ -21,6 +21,7 @@ class GameScreenViewModel {
     
     var totalScore = 0
     var remainingManoeuvres = 10
+    let emptyBlockScore = 10
     let radiusSize: CGFloat = 12
     
     var delegate: GameScreenDelegate?
@@ -28,6 +29,7 @@ class GameScreenViewModel {
     var gameView = UIView()
     var viewSize = 0
     var localBlockRectsArray = [[CGRect]]()
+    var localBlocks = [[Block]]()
     
     let colorBox = [UIColor.BoxGameTheme.coolOrange, .BoxGameTheme.coolGreen, .BoxGameTheme.coolMagenta, .BoxGameTheme.coolBlue, .BoxGameTheme.coolRed , .BoxGameTheme.coolLightGreen, .BoxGameTheme.coolDarkerBlue]
     var colorsToUse = [UIColor]()
@@ -43,6 +45,8 @@ class GameScreenViewModel {
         //populating positions array
         itemPositions = Array(repeating: Array(repeating: .empty, count: size), count: size)
         localBlockRectsArray = Array(repeating: Array(repeating: CGRect.zero, count: size), count: size)
+        localBlocks = Array(repeating: Array(repeating: Block(frame: CGRect.zero), count: size), count: size)
+
         
         let boxSize = enclosingView.bounds.width / CGFloat(size)
         
@@ -63,6 +67,7 @@ class GameScreenViewModel {
                 
                 blockArray.append(block)
                 localBlockRectsArray[i][j] = rect
+                localBlocks[i][j] = block
             }
         }
         
@@ -90,7 +95,6 @@ class GameScreenViewModel {
         remainingManoeuvres -= 1
         
         gameView.addSubview(box)
-        delegate?.updateView()
         
         
         
@@ -102,22 +106,32 @@ class GameScreenViewModel {
         }
         
         let scoreLabel = UILabel(frame: box.bounds)
-        let scoreMultiplier = (viewSize) - (box.position![1])
-        let belowBoxCount = 0
+        var scoreMultiplier = 0 //(viewSize) - (box.position![1])
         
-        scoreLabel.text = "\(5*scoreMultiplier)"
+        for item in box.position![1]...(viewSize-1) {
+            if itemPositions[box.position![0]][item] == .filled {
+                scoreMultiplier += 1
+            }
+        }
+        let scoreToAdd = 5*scoreMultiplier
+        
+        scoreLabel.text = "\(scoreToAdd)"
         scoreLabel.textAlignment = .center
         scoreLabel.textColor = .white
         box.addSubview(scoreLabel)
         
+        totalScore += scoreToAdd
+        
         if remainingManoeuvres <= 0 {
             finishGame()
         }
+        
+        delegate?.updateView()
     }
     
     
     func finishGame() {
-        print(itemPositions.transposed())
+        //
     }
     
     
@@ -146,11 +160,15 @@ class GameScreenViewModel {
                     for item in ((box.position![1]+1)...(itemPositions[box.position![0]].count-1)) {
                         if itemPositions[box.position![0]][item] == .empty {
                             itemPositions[box.position![0]][item] = .covered
+                            
+                            let coveredScoreLabel = UILabel(frame: localBlocks[box.position![0]][item].bounds)
+                            coveredScoreLabel.text = "\(emptyBlockScore)"
+                            coveredScoreLabel.textAlignment = .center
+                            localBlocks[box.position![0]][item].addSubview(coveredScoreLabel)
+                            
+                            totalScore += emptyBlockScore
                         }
-                        
-                        
                     }
-                    
                     return localBlockRectsArray[box.position![0]][box.position![1]]
                 }
             }
@@ -164,8 +182,6 @@ class GameScreenViewModel {
             }
             
         }
-        
-//        return localBlockRectsArray[box.position![0]][box.position![1]]
     }
     
     
