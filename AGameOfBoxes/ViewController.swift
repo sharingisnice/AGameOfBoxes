@@ -59,6 +59,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func restartGame(_ sender: Any) {
+        viewModel?.removeFromSuperview()
         viewModel = nil
         viewModel = GameScreenViewModel()
         setupComplete = false

@@ -12,7 +12,7 @@ protocol GameScreenDelegate {
     func enableRestart()
 }
 
-class GameScreenViewModel {
+class GameScreenViewModel: UIView {
     
     enum boxState {
         case empty
@@ -97,8 +97,6 @@ class GameScreenViewModel {
         
         gameView.addSubview(box)
         
-        
-        
         let newPosition = dropBoxToPosition(box: box)
         let distance = newPosition.origin.y - box.frame.origin.y
         let duration = animationDuration(distance: distance, speed: 250)
@@ -107,7 +105,7 @@ class GameScreenViewModel {
         }
         
         let scoreLabel = UILabel(frame: box.bounds)
-        var scoreMultiplier = 0 //(viewSize) - (box.position![1])
+        var scoreMultiplier = 0
         
         for item in box.position![1]...(viewSize-1) {
             if itemPositions[box.position![0]][item] == .filled {
@@ -209,6 +207,11 @@ class GameScreenViewModel {
     
     func animationDuration(distance: CGFloat, speed: Float ) -> TimeInterval {
         return TimeInterval(Float(distance) / speed)
+    }
+    
+    
+    deinit {
+//        print("removing")
     }
     
 }
