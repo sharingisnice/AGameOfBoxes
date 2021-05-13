@@ -8,5 +8,5 @@
 import UIKit
 
 class Block: UIButton {
-    var position: [Int]?   
+    var position: [Int]?
 }

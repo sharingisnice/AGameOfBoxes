@@ -16,6 +16,7 @@
 		E283E5CF264C03B900616F8F /* GameScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E5CE264C03B900616F8F /* GameScreenViewModel.swift */; };
 		E283E5D1264C0CC000616F8F /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E5D0264C0CC000616F8F /* Block.swift */; };
 		E283E5D3264C3A6400616F8F /* UsefulExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E5D2264C3A6400616F8F /* UsefulExtensions.swift */; };
+		E283E5D5264D5E7000616F8F /* BlockBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E283E5D4264D5E7000616F8F /* BlockBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E283E5CE264C03B900616F8F /* GameScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenViewModel.swift; sourceTree = "<group>"; };
 		E283E5D0264C0CC000616F8F /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		E283E5D2264C3A6400616F8F /* UsefulExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsefulExtensions.swift; sourceTree = "<group>"; };
+		E283E5D4264D5E7000616F8F /* BlockBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,8 +67,8 @@
 				E283E5BA264C026C00616F8F /* AppDelegate.swift */,
 				E283E5BC264C026C00616F8F /* SceneDelegate.swift */,
 				E283E5BE264C026C00616F8F /* ViewController.swift */,
-				E283E5CE264C03B900616F8F /* GameScreenViewModel.swift */,
-				E283E5D0264C0CC000616F8F /* Block.swift */,
+				E283E5D7264D5EEB00616F8F /* ViewModel */,
+				E283E5D6264D5E8E00616F8F /* Model */,
 				E283E5C0264C026C00616F8F /* Main.storyboard */,
 				E283E5C3264C026D00616F8F /* Assets.xcassets */,
 				E283E5C5264C026D00616F8F /* LaunchScreen.storyboard */,
@@ -74,6 +76,23 @@
 				E283E5D2264C3A6400616F8F /* UsefulExtensions.swift */,
 			);
 			path = AGameOfBoxes;
+			sourceTree = "<group>";
+		};
+		E283E5D6264D5E8E00616F8F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E283E5D0264C0CC000616F8F /* Block.swift */,
+				E283E5D4264D5E7000616F8F /* BlockBox.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E283E5D7264D5EEB00616F8F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E283E5CE264C03B900616F8F /* GameScreenViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +171,7 @@
 				E283E5D3264C3A6400616F8F /* UsefulExtensions.swift in Sources */,
 				E283E5CF264C03B900616F8F /* GameScreenViewModel.swift in Sources */,
 				E283E5BD264C026C00616F8F /* SceneDelegate.swift in Sources */,
+				E283E5D5264D5E7000616F8F /* BlockBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
