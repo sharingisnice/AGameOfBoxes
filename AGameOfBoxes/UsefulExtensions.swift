@@ -17,7 +17,15 @@ extension UIColor {
         static var coolMagenta:UIColor { return UIColor(red: 0.83, green: 0.77, blue: 0.98, alpha: 1.00) }
         static var coolRed:UIColor { return UIColor(red: 0.86, green: 0.40, blue: 0.33, alpha: 1.00) }
         static var coolDarkerBlue:UIColor { return UIColor(red: 0.49, green: 0.56, blue: 0.84, alpha: 1.00) }
+    }    
+}
 
+extension Collection where Self.Iterator.Element: RandomAccessCollection {
+    // PRECONDITION: `self` must be rectangular, i.e. every row has equal size.
+    func transposed() -> [[Self.Iterator.Element.Iterator.Element]] {
+        guard let firstRow = self.first else { return [] }
+        return firstRow.indices.map { index in
+            self.map{ $0[index] }
+        }
     }
-    
 }

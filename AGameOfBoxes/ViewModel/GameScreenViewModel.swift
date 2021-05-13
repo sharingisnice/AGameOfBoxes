@@ -13,12 +13,18 @@ protocol GameScreenDelegate {
 
 class GameScreenViewModel {
     
+    enum boxState {
+        case empty
+        case filled
+        case covered
+    }
+    
     var totalScore = 0
     var remainingManoeuvres = 10
     let radiusSize: CGFloat = 12
     
     var delegate: GameScreenDelegate?
-    var itemPositions = [[Bool]]()
+    var itemPositions = [[boxState]]()
     var gameView = UIView()
     var viewSize = 0
     var localBlockRectsArray = [[CGRect]]()
@@ -35,7 +41,7 @@ class GameScreenViewModel {
         colorsToUse = colorBox.shuffled()
         
         //populating positions array
-        itemPositions = Array(repeating: Array(repeating: false, count: size), count: size)
+        itemPositions = Array(repeating: Array(repeating: .empty, count: size), count: size)
         localBlockRectsArray = Array(repeating: Array(repeating: CGRect.zero, count: size), count: size)
         
         let boxSize = enclosingView.bounds.width / CGFloat(size)
@@ -80,11 +86,12 @@ class GameScreenViewModel {
         box.layer.cornerRadius = radiusSize
         box.position = sender.position
         box.layer.add(animation, forKey: nil)
-
+        
         remainingManoeuvres -= 1
         
         gameView.addSubview(box)
         delegate?.updateView()
+        
         
         
         let newPosition = dropBoxToPosition(box: box)
@@ -94,16 +101,25 @@ class GameScreenViewModel {
             box.frame = newPosition
         }
         
+        let scoreLabel = UILabel(frame: box.bounds)
+        let scoreMultiplier = (viewSize) - (box.position![1])
+        let belowBoxCount = 0
+        
+        scoreLabel.text = "\(5*scoreMultiplier)"
+        scoreLabel.textAlignment = .center
+        scoreLabel.textColor = .white
+        box.addSubview(scoreLabel)
+        
         if remainingManoeuvres <= 0 {
             finishGame()
         }
     }
     
-     
+    
     func finishGame() {
-        
+        print(itemPositions.transposed())
     }
-
+    
     
     
     func dropBoxToPosition(box: BlockBox) -> CGRect {
@@ -117,21 +133,30 @@ class GameScreenViewModel {
         while !isFinalPosition {
             if box.position![1] >= (viewSize-1) {
                 isFinalPosition = true
-                itemPositions[box.position![0]][box.position![1]] = true
+                itemPositions[box.position![0]][box.position![1]] = .filled
                 return localBlockRectsArray[box.position![0]][box.position![1]]
             }
             
             
-            if hasLeft && (itemPositions[box.position![0]-1][box.position![1]] == true) {
-                if hasRight && (itemPositions[(box.position![0])+1][(box.position![1])] == true) {
-                    itemPositions[box.position![0]][box.position![1]] = true
+            if hasLeft && (itemPositions[box.position![0]-1][box.position![1]] == .filled) {
+                if hasRight && (itemPositions[(box.position![0])+1][(box.position![1])] == .filled) {
+                    itemPositions[box.position![0]][box.position![1]] = .filled
                     isFinalPosition = true
+                    
+                    for item in ((box.position![1]+1)...(itemPositions[box.position![0]].count-1)) {
+                        if itemPositions[box.position![0]][item] == .empty {
+                            itemPositions[box.position![0]][item] = .covered
+                        }
+                        
+                        
+                    }
+                    
                     return localBlockRectsArray[box.position![0]][box.position![1]]
                 }
             }
             
-            if itemPositions[box.position![0]][box.position![1]+1] == true {
-                itemPositions[box.position![0]][box.position![1]] = true
+            if itemPositions[box.position![0]][box.position![1]+1] == .filled {
+                itemPositions[box.position![0]][box.position![1]] = .filled
                 isFinalPosition = true
                 return localBlockRectsArray[box.position![0]][box.position![1]]
             } else {
@@ -140,14 +165,14 @@ class GameScreenViewModel {
             
         }
         
-        return localBlockRectsArray[box.position![0]][box.position![1]]
+//        return localBlockRectsArray[box.position![0]][box.position![1]]
     }
     
     
     func canAddToPosition(position: [Int]) -> Bool {
         if remainingManoeuvres <= 0 { return false }
         let hasBox = itemPositions[position[0]][position[1]]
-        if (hasBox == true) { return false }
+        if (hasBox == .filled) { return false }
         
         return true
     }
