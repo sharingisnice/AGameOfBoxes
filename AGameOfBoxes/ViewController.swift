@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     
     let viewModel = GameScreenViewModel()
+    var setupComplete = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,16 +25,23 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        setupUI()
-    }
         
+        //we check if the setup is complete, otherwise this code is called everytime the ui updates and calls the draw method of viewModel
+        if !setupComplete {
+            setupUI()
+        }
+    }
+
+    
     func setupUI() {
         let initialView = viewModel.DrawBlocks(size: 5, enclosingView: gameArea)
-
+        
         for sub in initialView {
             gameArea.addSubview(sub)
         }
         
+        viewModel.delegate = self
+        setupComplete = true
     }
     
     func updateUI() {
@@ -44,3 +52,11 @@ class ViewController: UIViewController {
     
 }
 
+extension ViewController: GameScreenDelegate {
+    func updateView() {
+        self.updateUI()
+
+    }
+    
+    
+}
